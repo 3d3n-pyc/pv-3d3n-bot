@@ -1,8 +1,9 @@
 import {
-  CommandInteraction,
   SlashCommandBuilder,
   SlashCommandOptionsOnlyBuilder,
   SlashCommandSubcommandsOnlyBuilder,
+  ChatInputCommandInteraction,
+  ButtonInteraction,
   ClientEvents,
 } from 'discord.js';
 import { BotClient } from './BotClient';
@@ -11,9 +12,13 @@ export interface Command {
   data:
     | SlashCommandBuilder
     | SlashCommandSubcommandsOnlyBuilder
-    | SlashCommandOptionsOnlyBuilder
-    | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>;
-  execute: (interaction: CommandInteraction, client: BotClient) => Promise<void>;
+    | SlashCommandOptionsOnlyBuilder;
+  execute: (interaction: ChatInputCommandInteraction, client: BotClient) => Promise<void>;
+}
+
+export interface Button {
+  customId: string;
+  execute: (interaction: ButtonInteraction, client: BotClient) => Promise<void>;
 }
 
 export interface Event<K extends keyof ClientEvents> {

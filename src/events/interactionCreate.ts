@@ -6,6 +6,18 @@ import { Logger } from '../utils/logger';
 const interactionCreateEvent: Event<Events.InteractionCreate> = {
   name: Events.InteractionCreate,
   execute: async (client, interaction) => {
+    if (interaction.isButton()) {
+      const button = client.buttons.get(interaction.customId);
+      if (button) {
+        try {
+          await button.execute(interaction, client);
+        } catch (error) {
+          Logger.error(`Error executing button ${interaction.customId}:`, error);
+        }
+      }
+      return;
+    }
+
     if (!interaction.isChatInputCommand()) return;
 
     const command = client.commands.get(interaction.commandName);

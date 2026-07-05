@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { BotClient } from './BotClient';
 import { loadEvents } from './handlers/eventHandler';
 import { loadCommands } from './handlers/commandHandler';
+import { loadButtons } from './handlers/buttonHandler';
 import { dbInitPromise } from './database'; // Initialize DB connection
 import { Logger } from './utils/logger';
 
@@ -12,6 +13,7 @@ const start = async () => {
     await dbInitPromise;
     await loadEvents(client);
     await loadCommands(client);
+    await loadButtons(client);
 
     if (!process.env.DISCORD_TOKEN) {
       throw new Error('DISCORD_TOKEN is missing in .env file');

@@ -1,8 +1,9 @@
-import { Client, Collection, GatewayIntentBits, ClientOptions } from 'discord.js';
-import { Command } from './types';
+import { Client, Collection, ClientOptions, GatewayIntentBits } from 'discord.js';
+import { Command, Button } from './types';
 
 export class BotClient extends Client {
   public commands: Collection<string, Command>;
+  public buttons: Collection<string, Button>;
 
   constructor(options?: ClientOptions) {
     super({
@@ -10,5 +11,6 @@ export class BotClient extends Client {
       ...options,
     });
     this.commands = new Collection();
+    this.buttons = new Collection();
   }
 }
