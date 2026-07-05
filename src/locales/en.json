@@ -1,0 +1,7 @@
+{
+  "ping": {
+    "name": "ping",
+    "description": "Replies with Pong!",
+    "response": "🏓 Pong! Latency is {{latency}}ms."
+  }
+}
