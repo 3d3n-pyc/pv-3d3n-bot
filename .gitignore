@@ -1,0 +1,27 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build
+dist/
+build/
+
+# Environment Variables
+.env
+.env.local
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+sqlite.db
+
+# Drizzle (uncomment to ignore migrations if you don't want to track them)
+# drizzle/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
